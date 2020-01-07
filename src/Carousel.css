@@ -1,0 +1,73 @@
+.carousel {
+  width: 100%;
+  display: flex;
+  scroll-snap-type: x mandatory;
+  overflow: scroll;
+  padding-top: 90px;
+}
+
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel:after {
+  content: '';
+  display: block;
+  position: relative;
+  padding-right: calc(50% - 300px);
+}
+
+.carousel__card {
+  scroll-snap-align: center;
+}
+
+.carousel__card:first-child {
+  margin-left: calc(50% - 300px);
+}
+
+.carousel__card + .carousel__card {
+  margin-left: 242px;
+}
+
+.carousel__card > img {
+  box-shadow: 0 2px 52px 0 rgba(0, 0, 0, 0.5);
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+}
+
+.carousel__card.active > img {
+  opacity: 1;
+}
+
+.carousel__card__content {
+  margin-top: 40px;
+  /* Setting position fixed seems to break the card animation */
+  /* position: fixed; */
+  left: 40%;
+}
+
+.carousel__card:first-child .carousel__card__content {
+  color: #000;
+}
+
+.carousel__card:nth-child(2) .carousel__card__content,
+.carousel__card:nth-child(3) .carousel__card__content {
+  color: #ffd200;
+}
+
+.carousel__card__date {
+  font-size: 18px;
+  line-height: 1.22;
+  text-align: center;
+}
+
+.carousel__card__title {
+  font-size: 56px;
+  font-weight: bold;
+  text-align: center;
+}
+
+h3 {
+  margin: 0;
+}

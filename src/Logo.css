@@ -1,0 +1,35 @@
+.logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.logo__yellow g {
+  fill: #ffd200;
+}
+
+.s,
+.o,
+.ut,
+.h,
+.b,
+.a,
+.n,
+.k,
+.centre .c,
+.centre .e,
+.centre .nt,
+.centre .r,
+.centre .e2 {
+  animation: letters 0.8s ease-out;
+  animation-delay: 0.5s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes letters {
+  to {
+    transform: translateY(0);
+  }
+}
