@@ -10,11 +10,7 @@ First clone the repo.
 
 ```
 git clone git@github.com/teamdeeson/headless-drupal
-```
-
-### Getting started
-
-```
+cd headless-drupal
 make
 ```
 
@@ -23,6 +19,16 @@ Executing make will download the project dependencies and install Drupal into an
 The frontend is then available at: https://localhost:3000
 
 The Drupal backend CMS is available at: https://localhost:8888
+
+## Every other time.
+
+Once installed, you use the following command to start the project without installing all the dependencies:
+
+```
+make start
+```
+
+## Standards
 
 ### Formatting
 
@@ -48,6 +54,7 @@ firebase deploy
 ## Built With
 
 - [React](https://reactjs.org/)
+- [ContentaCMS](https://www.contentacms.org/)
 
 ## Authors
 
