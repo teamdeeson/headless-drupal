@@ -24,7 +24,7 @@ test:
 install-drupal: local.sqlite docroot/sites/default/files/tmp/
 
 local.sqlite:
-	drush si --yes --db-url=sqlite://../local.sqlite
+	./vendor/bin/drush si --yes --db-url=sqlite://../local.sqlite
 
 docroot/sites/default/files/tmp/:
 	mkdir -p docroot/sites/default/files/tmp/
