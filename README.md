@@ -28,7 +28,7 @@ Once installed, you use the following command to start the project without insta
 make start
 ```
 
-## Standards
+## Standards and testing.
 
 ### Formatting
 
@@ -40,6 +40,13 @@ For Eslint run
 make lint
 ```
 
+### Testing with Jest.
+
+To test the project using Jest, use:
+
+```
+make test
+```
 
 ## Deployment
 
