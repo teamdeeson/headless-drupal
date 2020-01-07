@@ -12,15 +12,17 @@ First clone the repo.
 git clone git@github.com/teamdeeson/headless-drupal
 ```
 
-### Installing
-
-The Makefile describes the steps you can take.
+### Getting started
 
 ```
 make
 ```
 
 Executing make will download the project dependencies and install Drupal into an sqlite db.
+
+The frontend is then available at: https://localhost:3000
+
+The Drupal backend CMS is available at: https://localhost:8888
 
 ### Formatting
 
@@ -31,6 +33,7 @@ For Eslint run
 ```
 make lint
 ```
+
 
 ## Deployment
 
