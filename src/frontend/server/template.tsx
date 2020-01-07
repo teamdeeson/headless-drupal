@@ -1,6 +1,6 @@
 import favicon from '../components/favicon';
 
-const defaultPageHead = '<title>Southbank Centre</title>';
+const defaultPageHead = '<title>Deeson Headless Drupal</title>';
 // TODO Move this to the entry point (server/index.tsx)
 // TODO Add it to express's app.locals
 // TODO Curry in the app.locals here?
