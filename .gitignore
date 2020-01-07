@@ -1,8 +1,7 @@
+local.sqlite*
+vendor
 node_modules
-.cache/
-dist/
-.env
-.DS_Store
-coverage/
-.vscode/
-.firebase/
+keys
+docroot
+dist
+yarn-error.log
