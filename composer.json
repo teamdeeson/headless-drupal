@@ -42,11 +42,22 @@
       ]
     },
     "drupal-scaffold": {
+      "source": [
+        "https://git.drupalcode.org/project/drupal/raw/{version}/{path}",
+        "https://raw.githubusercontent.com/drupal/drupal/{version}/{path}"
+      ],
       "initial": {
         "sites/default/default.services.yml": "sites/default/services.yml",
-        "sites/default/default.settings.php": "sites/default/settings.php"
+        "sites/default/default.settings.php": "sites/default/settings.php",
+        ".htaccess": ".htaccess",
+        "robots.txt": "robots.txt"
       },
-      "omit-defaults": false
+      "omit-defaults": false,
+      "includes": [
+        "index.php",
+        "sites/default/default.settings.php",
+        "sites/default/default.services.yml"
+      ]
     },
     "enable-patching": true,
     "patches": {}
@@ -55,5 +66,20 @@
     "preferred-install": {
       "*": "auto"
     }
+  },
+  "scripts": {
+    "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
+    "pre-install-cmd": [
+      "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
+    ],
+    "pre-update-cmd": [
+      "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
+    ],
+    "post-install-cmd": [
+      "@drupal-scaffold"
+    ],
+    "post-update-cmd": [
+      "@drupal-scaffold"
+    ]
   }
 }

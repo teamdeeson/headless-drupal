@@ -12,7 +12,7 @@ start:
 		-c "yellow,cyan" \
 		--kill-others \
 		--handle-input \
-		"webpack -wd" \
+		"./node_modules/.bin/webpack -wd" \
 		"./vendor/bin/drush runserver"
 
 lint:
