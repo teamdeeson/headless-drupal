@@ -2,6 +2,14 @@
 
 This is Deeson's framework for developing headless applications.
 
+## Dependencies
+
+You will need [Node](https://nodejs.org) and [PHP](https://php.net) installed globally on your development machine. Assuming you are using a Mac then these can be installed with `brew install node php`
+
+You will also need [yarn](https://yarnpkg.com/lang/en/) for node and [composer](https://getcomposer.org/) for PHP.
+
+If correctly setup then both `which yarn` and `which composer` should return a file path to an executable.
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
