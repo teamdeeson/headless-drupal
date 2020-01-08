@@ -77,7 +77,7 @@ To see the status of an environment you can use, for example, `./vendor/bin/drus
 
 As this is a lot of typing, it's recommended you create an alias for drush in your `.bashrc` file, e.g. `alias drush=./vendor/bin/drush`
 
-To see a list of all Drush commands you can use `drush @local help`
+To see a list of all Drush commands you can use `drush @local list` and to see more details about a specific command you can use `drush @local help command`
 
 Note, to access environments other than your own will require SSH access to the servers they are hosted on.
 
