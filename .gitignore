@@ -5,3 +5,4 @@ keys
 docroot
 dist
 yarn-error.log
+*.swp
