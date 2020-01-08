@@ -1,0 +1,4 @@
+local:
+  options:
+    env: local
+  uri: 'http://localhost:8888'
