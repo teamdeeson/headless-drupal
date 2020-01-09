@@ -9,13 +9,14 @@ const api: Api = {
   loadArrangement: eventId => {
     return Promise.resolve({ id: `server ${eventId}` });
   },
-  listArticles() {
-    return fetch('http://127.0.0.1:8888/api/tutorials').then(r => r.json());
+  listContent() {
+    return fetch('http://127.0.0.1:8888/api/pages').then(r => r.json());
   },
-  loadArticle(id, opts = { include: 'slices,slices.image,slices.image.imageFile,slices.content' }) {
+  // TODO Rename content to slices
+  loadContent(id, opts = { include: 'slices,slices.image,slices.image.imageFile' }) {
     const { include } = opts;
     return fetch(
-      `http://127.0.0.1:8888/api/tutorials/${encodeURIComponent(id)}?include=${encodeURIComponent(include)}`
+      `http://127.0.0.1:8888/api/pages/${encodeURIComponent(id)}?include=${encodeURIComponent(include)}`
     ).then(r => r.json());
   },
 };

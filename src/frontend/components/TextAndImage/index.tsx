@@ -7,12 +7,21 @@ const TextAndImage = ({ text, image }): ReactElement => {
   return (
     <div className="text-and-image">
       {text}
-      <div>{image}</div>
+      <div>
+        <img src={image} />
+      </div>
     </div>
   );
 };
 export default TextAndImage;
 
 TextAndImage.fromDrupal = ({ data, included }) => {
-  return <TextAndImage text={<TextField value={data.attributes.text} />} />;
+  // console.log("data", data);
+  // console.log("included", included);
+  // console.log(included[2].attributes.uri.url);
+  const imageUrl = `http://localhost:8888${included[2].attributes.uri.url}`;
+  return <TextAndImage
+      text={<TextField value={data.attributes.text} />}
+      image={imageUrl}
+  />;
 };

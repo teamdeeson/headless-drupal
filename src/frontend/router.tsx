@@ -3,7 +3,8 @@ import React, { FC, ReactNode, ReactElement } from 'react';
 import ViewArrangement from './pages/view-arrangement';
 import WhatsOn from './pages/whats-on';
 import CmsList from './pages/cms-list';
-import CmsPage from './pages/cms-page';
+import BasicPage from './pages/BasicPage';
+import Home from './pages/Home';
 import { Routable } from './Routable';
 
 interface TopLevelRoute {
@@ -16,7 +17,8 @@ export const topLevelRoutes: TopLevelRoute[] = [
   { path: 'whats-on', component: WhatsOn },
   { path: 'whats-on/:eventId', component: ViewArrangement },
   { path: 'tutorials', component: CmsList },
-  { path: 'tutorials/:id', component: CmsPage },
+  { path: 'pages/:id', component: BasicPage },
+  { path: '/', component: Home },
 ];
 
 const Router: FC = () => (

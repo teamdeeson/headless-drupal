@@ -5,7 +5,7 @@ module.exports = {
   plugins: ['@typescript-eslint', 'eslint-comments', 'jest'],
   extends: [
     'airbnb-typescript',
-    'plugin:@typescript-eslint/recomme nded',
+    'plugin:@typescript-eslint/recommended',
     'plugin:eslint-comments/recommended',
     'plugin:jest/recommended',
     'plugin:prettier/recommended',
