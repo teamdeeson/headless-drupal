@@ -1,4 +1,4 @@
-import { globalHistory, ServerLocation } from '@reach/router';
+import { globalHistory, ServerLocation, isRedirect } from '@reach/router';
 import { pick } from '@reach/router/lib/utils';
 import express from 'express';
 import helmet from 'helmet';
@@ -55,7 +55,6 @@ app.post('/api/function/:function', (req, res, next) => {
 
 app.get('/*', (req, res, next) => {
   const route = pick(topLevelRoutes, req.url);
-
   const propsPromise =
     route && route.route.component.getInitialProps
       ? route.route.component.getInitialProps(api, route.params)
@@ -77,7 +76,13 @@ app.get('/*', (req, res, next) => {
         })
       );
     })
-    .catch(next);
+    .catch(e => {
+      if (isRedirect(e)) {
+        res.redirect(e.uri);
+      } else {
+        next(e);
+      }
+    });
 });
 
 // eslint-disable-next-line no-console
