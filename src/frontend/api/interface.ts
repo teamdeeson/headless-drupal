@@ -1,27 +1,24 @@
-export interface Api extends CallableApi {
-  loadArrangement(eventId: string): Promise<Arrangement>;
-  listArticles(): Promise<Tutorial[]>;
-  loadArticle(id: string, options?: { include: string }): Promise<JsonAPIDocument<Tutorial>>;
+export interface Api {
+  getContentOrRedirectByUrl(path: string): Promise<JsonAPIDocument<ContentType>>;
 }
 
-// TODO I'm not really okay with this. I wanted a way to say that everything in the API had to be a function which returns a promise.
-// In reality I've added too much flexbility to the API objects
-interface CallableApi {
-  [key: string]: ApiCallback;
-}
-
-export type ApiCallback = (...args: any[]) => Promise<any>;
-
-export interface Arrangement {
-  id: string;
-}
-
-export interface Tutorial extends JsonAPIEntity {
+interface Content extends JsonAPIEntity {
+  type: string;
   attributes: {
     isPublished: boolean;
     title: string;
     createdAt: string;
     updatedAt: string;
+  };
+}
+
+export interface BasicPage extends Content {
+  type: 'page';
+}
+
+export interface Tutorial extends Content {
+  type: 'tutorials';
+  attributes: Content['attributes'] & {
     link: DrupalLinkField;
     summary: string;
     topic: string;
@@ -32,6 +29,8 @@ export interface Tutorial extends JsonAPIEntity {
     };
   };
 }
+
+export type ContentType = BasicPage | Tutorial;
 
 export interface DrupalLinkField {
   uri: string;

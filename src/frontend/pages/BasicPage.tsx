@@ -1,20 +1,19 @@
 import React from 'react';
-import { Link } from '@reach/router';
+import { Link, Redirect } from '@reach/router';
 import { useInitialProps } from '../useInitialProps';
-import { Api, Tutorial, JsonAPIDocument, JsonAPIEntity } from '../api/interface';
+import { Api, Tutorial, JsonAPIDocument, JsonAPIEntity, ContentType } from '../api/interface';
 import { Routable } from '../Routable';
 import TextAndImage from '../components/TextAndImage';
 import { find } from '../drupalFields';
 
 interface Params {
-  id: string;
+  '*': string;
 }
 
-function getInitialProps(api: Api, { id }: Params): Promise<JsonAPIDocument<Tutorial>> {
-  return api.loadContent(id);
+function getInitialProps(api: Api, { '*': path }: Params): Promise<JsonAPIDocument<ContentType>> {
+  return api.getContentOrRedirectByUrl(path);
 }
 
-// Renders paragraphs.
 function Paragraph({ data, included }) {
   switch (data.type) {
     // case 'paragraph--text': {
@@ -31,10 +30,15 @@ function Paragraph({ data, included }) {
   return null;
 }
 
-const BasicPage: Routable<Params, JsonAPIDocument<Tutorial>> = ({ id }: Params) => {
-  const doc = useInitialProps(api => getInitialProps(api, { id }));
+const BasicPage: Routable<Params, JsonAPIDocument<ContentType>> = ({ '*': path }) => {
+  const doc = useInitialProps(api => getInitialProps(api, { '*': path }), [path]);
 
-  if (doc) {
+  // TODO this is how to return a redirect:
+  // return <Redirect to="/" />;
+
+  // TODO handle 404s with a server side status.
+
+  if (doc && doc.data.type === 'tutorials') {
     return (
       <>
         <article>
@@ -46,9 +50,17 @@ const BasicPage: Routable<Params, JsonAPIDocument<Tutorial>> = ({ id }: Params) 
         <Link to="..">Back</Link>
       </>
     );
+  } else if (doc && doc.data.type === 'page') {
+    return (
+      <>
+        <article>
+          <h1>{doc.data.attributes.title}</h1>
+        </article>
+      </>
+    );
   }
 
-  return <span>should be allowed null return here</span>;
+  return null;
 };
 
 BasicPage.getInitialProps = getInitialProps;

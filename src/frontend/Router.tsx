@@ -1,7 +1,5 @@
 import { RouteComponentProps, Router as ReachRouter } from '@reach/router';
 import React, { FC, ReactNode, ReactElement } from 'react';
-import ViewArrangement from './pages/view-arrangement';
-import WhatsOn from './pages/whats-on';
 import CmsList from './pages/cms-list';
 import BasicPage from './pages/BasicPage';
 import Home from './pages/Home';
@@ -14,11 +12,8 @@ interface TopLevelRoute {
 
 // TODO code splitting: https://github.com/gregberge/loadable-components
 export const topLevelRoutes: TopLevelRoute[] = [
-  { path: 'whats-on', component: WhatsOn },
-  { path: 'whats-on/:eventId', component: ViewArrangement },
-  { path: 'tutorials', component: CmsList },
-  { path: 'pages/:id', component: BasicPage },
   { path: '/', component: Home },
+  { path: '*', component: BasicPage },
 ];
 
 const Router: FC = () => (

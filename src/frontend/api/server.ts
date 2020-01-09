@@ -6,9 +6,16 @@ import { Api } from './interface';
 // This could do with being a clearer opt-in.
 
 const api: Api = {
-  loadArrangement: eventId => {
-    return Promise.resolve({ id: `server ${eventId}` });
+  getContentOrRedirectByUrl(path) {
+    return fetch(`http://127.0.0.1:8888/router/translate-path?path=${encodeURIComponent(path)}`)
+      .then(r => {
+        if (r.status === 200) return r.json();
+        else return { error: 'something not found' };
+      })
+      .then(r => fetch(r.jsonapi.individual))
+      .then(r => r.json());
   },
+
   listContent() {
     return fetch('http://127.0.0.1:8888/api/pages').then(r => r.json());
   },
