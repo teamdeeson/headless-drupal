@@ -1,6 +1,6 @@
 import { Api } from './interface';
 
-function callFunction(name: string, ...args: unknown[]) {
+function callFunction<T>(name: string, ...args: unknown[]): Promise<T> {
   return fetch(`/api/function/${encodeURIComponent(name)}`, {
     method: 'POST',
     body: JSON.stringify(args),
