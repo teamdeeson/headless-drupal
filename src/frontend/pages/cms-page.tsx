@@ -31,7 +31,7 @@ function Paragraph({ data, included }: any) {
 }
 
 const CmsPage: Routable<Params, JsonAPIDocument<Tutorial>> = ({ id }: Params) => {
-  const doc = useInitialProps(api => getInitialProps(api, { id }));
+  const doc = useInitialProps(api => getInitialProps(api, { id }), [id]);
   if (doc) {
     return (
       <>
