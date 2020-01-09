@@ -53,7 +53,7 @@ app.post('/api/function/:function', (req, res, next) => {
     .catch(next);
 });
 
-app.get('/*', (req, res) => {
+app.get('/*', (req, res, next) => {
   const route = pick(topLevelRoutes, req.url);
 
   const propsPromise =
@@ -61,21 +61,23 @@ app.get('/*', (req, res) => {
       ? route.route.component.getInitialProps(api, route.params)
       : Promise.resolve({});
 
-  propsPromise.then(initialProps => {
-    globalHistory.location.state = { initialProps };
-    res.send(
-      template({
-        body: ReactDOMServer.renderToString(
-          <apiContext.Provider value={api}>
-            <ServerLocation url={req.url}>
-              <Router />
-            </ServerLocation>
-          </apiContext.Provider>
-        ),
-        jsState: initialProps,
-      })
-    );
-  });
+  propsPromise
+    .then(initialProps => {
+      globalHistory.location.state = { initialProps };
+      res.send(
+        template({
+          body: ReactDOMServer.renderToString(
+            <apiContext.Provider value={api}>
+              <ServerLocation url={req.url}>
+                <Router />
+              </ServerLocation>
+            </apiContext.Provider>
+          ),
+          jsState: initialProps,
+        })
+      );
+    })
+    .catch(next);
 });
 
 // eslint-disable-next-line no-console

@@ -12,7 +12,8 @@
     "cweagans/composer-patches": "^1.6",
     "drush/drush": "^9.0.0",
     "composer/installers": "^1.2",
-    "drupal/coffee": "^1.0@beta"
+    "drupal/coffee": "^1.0@beta",
+    "drupal/paragraphs": "^1.10"
   },
   "require-dev": {
     "drupal/core-dev": "^8.8",
