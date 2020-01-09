@@ -21,6 +21,9 @@ lint:
 test:
 	./node_modules/.bin/jest ./src/frontend
 
+format:
+	./node_modules/.bin/prettier ./src/frontend/**/*.{ts,tsx,js,jsx} --write
+
 install-drupal: local.sqlite docroot/sites/default/files/tmp/
 
 local.sqlite:
