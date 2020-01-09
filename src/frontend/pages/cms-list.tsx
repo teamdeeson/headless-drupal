@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from '@reach/router';
 import { useInitialProps } from '../initial-props';
-import { Api, Article } from '../api/interface';
+import { Api, Tutorial } from '../api/interface';
 import { Routable } from '../Routable';
 
-function getInitialProps(api: Api): Promise<Article[]> {
+function getInitialProps(api: Api): Promise<Tutorial[]> {
   return api.listArticles();
 }
 

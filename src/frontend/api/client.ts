@@ -18,8 +18,8 @@ const api: Api = {
   listArticles() {
     return callFunction('listArticles');
   },
-  loadArticle(id) {
-    return callFunction('loadArticle', id);
+  loadArticle(id, options) {
+    return callFunction('loadArticle', id, options);
   },
 };
 export default api;

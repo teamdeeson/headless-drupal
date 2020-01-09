@@ -19,7 +19,7 @@ function getInitialProps(api: Api): Promise<'done'> {
 }
 
 test('pre-rendered props', () => {
-  mockApi.apiCall().then(initialPageState => {
+  return mockApi.apiCall().then(initialPageState => {
     globalHistory.location.state = { initialProps: initialPageState };
     const { result } = renderHook(() => useInitialProps(getInitialProps));
     expect(result.current).toBe('done');
