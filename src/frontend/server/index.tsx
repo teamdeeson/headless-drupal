@@ -8,7 +8,7 @@ import ReactDOMServer from 'react-dom/server';
 import { Api } from '../api/interface';
 import api from '../api/server';
 import { apiContext } from '../initial-props';
-import Router, { topLevelRoutes } from '../router';
+import Router, { topLevelRoutes } from '../Router';
 import template from './template';
 
 const MAX_AGE_STATIC = ms('2h');

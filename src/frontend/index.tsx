@@ -4,7 +4,7 @@ import { hydrate } from 'react-dom';
 import api from './api/client';
 import './base.css';
 import { apiContext } from './initial-props';
-import Router from './router';
+import Router from './Router';
 
 declare const initialPageState: unknown;
 
