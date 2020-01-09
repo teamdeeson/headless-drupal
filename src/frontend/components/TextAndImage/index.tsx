@@ -6,8 +6,10 @@ import './TextAndImage.css';
 const TextAndImage = ({ text, image }): ReactElement => {
   return (
     <div className="text-and-image">
-      {text}
-      <div>
+      <div className="text-and-image__text">
+        {text}
+      </div>
+      <div className="text-and-image__image">
         <img src={image} />
       </div>
     </div>
