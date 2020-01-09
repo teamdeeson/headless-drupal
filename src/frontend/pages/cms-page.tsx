@@ -14,7 +14,7 @@ function getInitialProps(api: Api, { id }: Params): Promise<JsonAPIDocument<Tuto
 }
 
 // Renders paragraphs.
-function Paragraph({ data, included }) {
+function Paragraph({ data, included }: any) {
   switch (data.type) {
     // case 'paragraph--text': {
     // }
