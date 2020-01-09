@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from '@reach/router';
-import { useInitialProps } from '../initial-props';
+import { useInitialProps } from '../useInitialProps';
 import { Api, Tutorial } from '../api/interface';
 import { Routable } from '../Routable';
 

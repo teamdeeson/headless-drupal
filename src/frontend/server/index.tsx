@@ -7,7 +7,7 @@ import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import { Api } from '../api/interface';
 import api from '../api/server';
-import { apiContext } from '../initial-props';
+import { apiContext } from '../useInitialProps';
 import Router, { topLevelRoutes } from '../Router';
 import template from './template';
 

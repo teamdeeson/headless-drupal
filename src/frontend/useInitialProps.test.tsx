@@ -2,7 +2,7 @@ import { globalHistory } from '@reach/router';
 import { renderHook } from '@testing-library/react-hooks';
 import React, { FC, ReactNode } from 'react';
 import { Api } from './api/interface';
-import { apiContext, useInitialProps } from './initial-props';
+import { apiContext, useInitialProps } from './useInitialProps';
 
 type MockApi = Partial<Api> & {
   apiCall(): Promise<'done'>;

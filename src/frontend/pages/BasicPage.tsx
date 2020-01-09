@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from '@reach/router';
-import { useInitialProps } from '../initial-props';
+import { useInitialProps } from '../useInitialProps';
 import { Api, Tutorial, JsonAPIDocument, JsonAPIEntity } from '../api/interface';
 import { Routable } from '../Routable';
 import TextAndImage from '../components/TextAndImage';
@@ -16,7 +16,6 @@ function getInitialProps(api: Api, { id }: Params): Promise<JsonAPIDocument<Tuto
 
 // Renders paragraphs.
 function Paragraph({ data, included }) {
-
   switch (data.type) {
     // case 'paragraph--text': {
     // }
@@ -33,7 +32,6 @@ function Paragraph({ data, included }) {
 }
 
 const BasicPage: Routable<Params, JsonAPIDocument<Tutorial>> = ({ id }: Params) => {
-
   const doc = useInitialProps(api => getInitialProps(api, { id }));
 
   if (doc) {

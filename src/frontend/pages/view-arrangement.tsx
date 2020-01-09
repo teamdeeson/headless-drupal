@@ -1,7 +1,7 @@
 import { Link } from '@reach/router';
 import React from 'react';
 import { Api, Arrangement } from '../api/interface';
-import { useInitialProps } from '../initial-props';
+import { useInitialProps } from '../useInitialProps';
 import { Routable } from '../Routable';
 
 interface Params {
