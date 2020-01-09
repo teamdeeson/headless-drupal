@@ -59,6 +59,7 @@
     "mini-css-extract-plugin": "^0.8.2",
     "native-promise-only": "^0.8.1",
     "nodemon-webpack-plugin": "^4.2.1",
+    "null-loader": "^3.0.0",
     "postcss-custom-media": "^7.0.8",
     "postcss-import": "^12.0.1",
     "postcss-inline-svg": "^4.0.0",

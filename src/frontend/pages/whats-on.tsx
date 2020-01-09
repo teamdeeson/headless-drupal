@@ -1,6 +1,6 @@
 import React from 'react';
 import { Routable } from '../Routable';
-import WhatsOnListing from '../components/whats-on-listing';
+import WhatsOnListing from '../components/WhatsOnListing';
 
 const WhatsOn: Routable = () => (
   <>

@@ -1,8 +1,10 @@
 import React, { ReactElement } from 'react';
 import { Link } from '@reach/router';
-import './whatsOnListing.css';
+import './WhatsOnListing.css';
 
-const WhatsOnListing = (): ReactElement => (
+export default { title: 'Whats on listing' };
+
+export const WhatsOnListing = () => (
   <ul>
     <li>This will be the whats on listing</li>
     <li>
@@ -16,4 +18,3 @@ const WhatsOnListing = (): ReactElement => (
     </li>
   </ul>
 );
-export default WhatsOnListing;
