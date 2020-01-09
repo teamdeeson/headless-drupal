@@ -4,6 +4,7 @@ import { useInitialProps } from '../initial-props';
 import { Api, Tutorial, JsonAPIDocument, JsonAPIEntity } from '../api/interface';
 import { Routable } from '../Routable';
 import TextAndImage from '../components/TextAndImage';
+import { find } from '../drupalFields';
 
 interface Params {
   id: string;
@@ -55,7 +56,3 @@ const BasicPage: Routable<Params, JsonAPIDocument<Tutorial>> = ({ id }: Params) 
 BasicPage.getInitialProps = getInitialProps;
 
 export default BasicPage;
-
-function find(id: string, included: JsonAPIEntity[]) {
-  return included.find(i => i.id === id);
-}
