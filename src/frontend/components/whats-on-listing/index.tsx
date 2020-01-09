@@ -1,5 +1,6 @@
 import React, { ReactElement } from 'react';
 import { Link } from '@reach/router';
+import './whatsOnListing.css';
 
 const WhatsOnListing = (): ReactElement => (
   <ul>
