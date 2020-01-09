@@ -48,8 +48,8 @@ app.post('/api/function/:function', (req, res, next) => {
 
   res.set('Content-Type', 'application/json');
 
-  api[f](...req.body)
-    .then(r => res.send(r))
+  (api[f] as any)(...req.body)
+    .then((r: string) => res.send(r))
     .catch(next);
 });
 

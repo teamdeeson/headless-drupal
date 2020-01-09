@@ -15,6 +15,7 @@ const mockApi: MockApi = {
 };
 
 function getInitialProps(api: Api): Promise<'done'> {
+  // @ts-ignore
   return api.apiCall();
 }
 
@@ -25,7 +26,7 @@ beforeEach(() => {
 test('pre-rendered props', () => {
   return mockApi.apiCall().then(initialPageState => {
     globalHistory.location.state = { initialProps: initialPageState };
-    const { result } = renderHook(() => useInitialProps(getInitialProps));
+    const { result } = renderHook(() => useInitialProps(getInitialProps, []));
     expect(result.current).toBe('done');
   });
 });
@@ -35,7 +36,7 @@ test('loading initial props', () => {
     <apiContext.Provider value={mockApi as Api}>{children}</apiContext.Provider>
   );
 
-  const { result, waitForNextUpdate } = renderHook(() => useInitialProps(getInitialProps), { wrapper });
+  const { result, waitForNextUpdate } = renderHook(() => useInitialProps(getInitialProps, []), { wrapper });
 
   expect(result.current).toBe(false);
 
