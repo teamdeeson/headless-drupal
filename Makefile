@@ -16,7 +16,7 @@ start:
 		"./vendor/bin/drush runserver"
 
 lint:
-	./node_modules/.bin/tsc --noemit && ./node_modules/.bin/eslint --ext .js,.jsx,.ts,.tsx ./src/frontend/
+	./node_modules/.bin/tsc && ./node_modules/.bin/eslint --ext .js,.jsx,.ts,.tsx ./src/frontend/
 
 test:
 	./node_modules/.bin/jest ./src/frontend

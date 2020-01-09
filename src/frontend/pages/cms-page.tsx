@@ -14,7 +14,7 @@ function getInitialProps(api: Api, { id }: Params): Promise<JsonAPIDocument<Tuto
 }
 
 // Renders paragraphs.
-function Paragraph({ data, included }) {
+function Paragraph({ data, included }: any) {
   switch (data.type) {
     // case 'paragraph--text': {
     // }
@@ -31,7 +31,7 @@ function Paragraph({ data, included }) {
 }
 
 const CmsPage: Routable<Params, JsonAPIDocument<Tutorial>> = ({ id }: Params) => {
-  const doc = useInitialProps(api => getInitialProps(api, { id }));
+  const doc = useInitialProps(api => getInitialProps(api, { id }), [id]);
   if (doc) {
     return (
       <>
