@@ -44,9 +44,7 @@ export interface JsonAPIEntity {
   id: string;
   links: { self: { href: string } };
   attributes: {};
-  relationships: {
-    [k: string]: JsonApiRelationship;
-  };
+  relationships: {};
 }
 
 export interface JsonAPIDocument<T = JsonAPIEntity> {

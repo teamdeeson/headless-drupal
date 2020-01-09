@@ -17,7 +17,4 @@ declare module '*.ico' {
   export default value;
 }
 
-// eslint-disable-next-line @typescript-eslint/camelcase
-declare function __non_webpack_require__(path: string): any;
-
 declare module 'whatwg-fetch';

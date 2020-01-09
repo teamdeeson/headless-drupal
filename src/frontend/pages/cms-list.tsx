@@ -9,7 +9,7 @@ function getInitialProps(api: Api): Promise<Tutorial[]> {
 }
 
 const CmsPage: Routable<{}> = () => {
-  const articles = useInitialProps(api => getInitialProps(api));
+  const articles = useInitialProps(api => getInitialProps(api), []);
 
   return (
     <ul>

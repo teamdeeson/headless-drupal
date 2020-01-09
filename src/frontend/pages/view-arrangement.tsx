@@ -13,7 +13,7 @@ function getInitialProps(api: Api, { eventId }: Params): Promise<Arrangement> {
 }
 
 const ViewArrangement: Routable<Params, Arrangement> = ({ eventId }: Params) => {
-  const a = useInitialProps(api => getInitialProps(api, { eventId }));
+  const a = useInitialProps(api => getInitialProps(api, { eventId }), [eventId]);
 
   return (
     <>
