@@ -1,0 +1,31 @@
+uuid: 2be603eb-624b-4c7a-9d5b-b2e0d156a5de
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment
+    - field.field.comment.comment.comment_body
+  enforced:
+    module:
+      - recipes_magazin
+  module:
+    - text
+_core:
+  default_config_hash: UrNTjTqTu0L5_h3hM2ngoK8yOhul9TTAHLzSG1Yhwnw
+id: comment.comment.default
+targetEntityType: comment
+bundle: comment
+mode: default
+content:
+  comment_body:
+    label: hidden
+    type: text_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  links:
+    weight: 100
+    region: content
+hidden:
+  langcode: true

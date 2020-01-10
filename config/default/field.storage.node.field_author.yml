@@ -1,0 +1,25 @@
+uuid: 04f6e43b-c1e0-42ce-947c-2579b146a057
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - recipes_magazin
+  module:
+    - node
+    - user
+_core:
+  default_config_hash: c_kMNoRCcpM5k0i5-8rKW7qr90Tp9HbrZesD_MBdd0s
+id: node.field_author
+field_name: field_author
+entity_type: node
+type: entity_reference
+settings:
+  target_type: user
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

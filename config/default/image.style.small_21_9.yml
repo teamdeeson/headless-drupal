@@ -1,0 +1,21 @@
+uuid: f23a702d-f684-4bcb-9a54-6e1f97f73347
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - image
+      - recipes_magazin
+_core:
+  default_config_hash: UfClpqJ90erdnBHkO-Uai4t3ounoFmnSt55s9f9TSuA
+name: small_21_9
+label: 'Small 21:9 (768x330)'
+effects:
+  06eaf095-124b-435d-af50-442044e91e7d:
+    uuid: 06eaf095-124b-435d-af50-442044e91e7d
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 768
+      height: 330
+      anchor: center-center

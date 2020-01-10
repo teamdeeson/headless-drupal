@@ -1,0 +1,30 @@
+uuid: 17e6816d-516f-4dc7-ad05-91f630bebc68
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.background_image
+    - media.type.image
+    - node.type.embeddable
+_core:
+  default_config_hash: lJ2iX1Vh_PXjB34VKuqLLH2IF3TlCwPrLEV8kQtFei0
+id: node.embeddable.background_image
+field_name: background_image
+entity_type: node
+bundle: embeddable
+label: 'Background image'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

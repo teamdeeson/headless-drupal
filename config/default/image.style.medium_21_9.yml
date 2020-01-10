@@ -1,0 +1,21 @@
+uuid: d3d08783-c003-49d0-ad68-abb4a4898468
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - image
+      - recipes_magazin
+_core:
+  default_config_hash: '-uZGUZoUV5MAhSt3lGb7zH6bd1_Z69L37Clxyz_xTK4'
+name: medium_21_9
+label: 'Medium 21:9 (1024x440)'
+effects:
+  52985ed4-81d6-4ecf-90c1-4e8c651f76ba:
+    uuid: 52985ed4-81d6-4ecf-90c1-4e8c651f76ba
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 1024
+      height: 440
+      anchor: center-center

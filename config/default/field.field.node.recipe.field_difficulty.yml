@@ -1,0 +1,28 @@
+uuid: 67cbeb02-9029-42f7-a3e2-c9503c0580e8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_difficulty
+    - node.type.recipe
+  enforced:
+    module:
+      - recipes_magazin
+  module:
+    - options
+_core:
+  default_config_hash: DcwOHLWBLscOOiOMXsDRflb0xwQj0ZKN6drsGVe5nlU
+id: node.recipe.field_difficulty
+field_name: field_difficulty
+entity_type: node
+bundle: recipe
+label: Difficulty
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: medium
+default_value_callback: ''
+settings: {  }
+field_type: list_string

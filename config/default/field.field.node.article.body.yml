@@ -1,0 +1,28 @@
+uuid: 5c2f9b4f-3fb3-4013-9e2e-e105fca486cc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.article
+  enforced:
+    module:
+      - recipes_magazin
+  module:
+    - text
+_core:
+  default_config_hash: 3SzBUEv7kmwkhTcnwsB1Dv64C06kA5c0mrWoDJonS-A
+id: node.article.body
+field_name: body
+entity_type: node
+bundle: article
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+field_type: text_with_summary

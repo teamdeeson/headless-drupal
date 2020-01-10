@@ -1,0 +1,52 @@
+uuid: a3eb108b-15f2-4d63-bee2-ad925b695b12
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - recipes_magazin
+  module:
+    - rest
+_core:
+  default_config_hash: LXSoAODuOM11lAMPLsWrf7a72J62MfALc1UPOo36yS0
+id: rest_resource_config--rest_resource_config
+disabled: true
+path: rest_resource_config/rest_resource_config
+resourceType: rest_resource_config--rest_resource_config
+resourceFields:
+  id:
+    fieldName: id
+    publicName: id
+    enhancer:
+      id: ''
+    disabled: false
+  revision:
+    fieldName: revision
+    publicName: revision
+    enhancer:
+      id: ''
+    disabled: false
+  bundle:
+    fieldName: bundle
+    publicName: bundle
+    enhancer:
+      id: ''
+    disabled: false
+  langcode:
+    fieldName: langcode
+    publicName: langcode
+    enhancer:
+      id: ''
+    disabled: false
+  default_langcode:
+    fieldName: default_langcode
+    publicName: default_langcode
+    enhancer:
+      id: ''
+    disabled: false
+  uuid:
+    fieldName: uuid
+    publicName: uuid
+    enhancer:
+      id: ''
+    disabled: false

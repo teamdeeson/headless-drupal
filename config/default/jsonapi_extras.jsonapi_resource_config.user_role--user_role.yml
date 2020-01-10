@@ -1,0 +1,64 @@
+uuid: 92062ab2-a317-490c-8880-e0347aac5148
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - recipes_magazin
+  module:
+    - user
+_core:
+  default_config_hash: idfkRKSkqJ7liBc3kBl6dwN4YqUSKn00pj8ghy2s7JU
+id: user_role--user_role
+disabled: false
+path: roles
+resourceType: roles
+resourceFields:
+  id:
+    fieldName: id
+    publicName: internalId
+    enhancer:
+      id: ''
+    disabled: false
+  weight:
+    fieldName: weight
+    publicName: weight
+    enhancer:
+      id: ''
+    disabled: false
+  label:
+    fieldName: label
+    publicName: label
+    enhancer:
+      id: ''
+    disabled: false
+  revision:
+    disabled: true
+    fieldName: revision
+    publicName: revision
+    enhancer:
+      id: ''
+  bundle:
+    fieldName: bundle
+    publicName: bundle
+    enhancer:
+      id: ''
+    disabled: false
+  langcode:
+    disabled: true
+    fieldName: langcode
+    publicName: langcode
+    enhancer:
+      id: ''
+  default_langcode:
+    disabled: true
+    fieldName: default_langcode
+    publicName: default_langcode
+    enhancer:
+      id: ''
+  uuid:
+    disabled: true
+    fieldName: uuid
+    publicName: uuid
+    enhancer:
+      id: ''
