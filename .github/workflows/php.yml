@@ -21,3 +21,11 @@ jobs:
 
     # - name: Run test suite
     #   run: composer run-script test
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: deeson/deployer
+      
+      - name: send the built code to Pantheon
+        run: /opt/ci-tools/deployer.sh
+    
