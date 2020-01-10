@@ -1,6 +1,7 @@
 {
   "name": "teamdeeson/headless-drupal",
   "description": "The Deeson Headless Drupal with React framework",
+  "license": "MIT",
   "repositories": [
     {
       "type": "composer",
