@@ -1,5 +1,6 @@
 {
-  "name": "deesongroup6346/southbank-centre",
+  "name": "headless-drupal",
+  "description": "The Deeson Headless Drupal with React framework",
   "repositories": [
     {
       "type": "composer",
