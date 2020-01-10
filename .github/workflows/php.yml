@@ -24,7 +24,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: deeson/deployer:latest
+      - uses: deeson/deployer@latest
       
       - name: send the built code to Pantheon
         run: /opt/ci-tools/deployer.sh
