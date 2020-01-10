@@ -24,10 +24,23 @@ test:
 format:
 	./node_modules/.bin/prettier ./src/frontend/**/*.{ts,tsx,js,jsx} --write
 
-install-drupal: local.sqlite docroot/sites/default/files/tmp/
+install-drupal: local.sqlite \
+				docroot/sites/default/files/tmp/ \
+				docroot/sites/default/settings.php \
+				docroot/modules/custom \
+				docroot/themes/custom;
 
 local.sqlite:
 	./vendor/bin/drush si --yes --db-url=sqlite://../local.sqlite
 
 docroot/sites/default/files/tmp/:
 	mkdir -p docroot/sites/default/files/tmp/
+
+docroot/sites/default/settings.php:
+	ln -s ../../../src/settings/settings.php docroot/sites/default/settings.php
+
+docroot/modules/custom:
+	ln -s ../../src/modules $@
+
+docroot/themes/custom:
+	ln -s ../../src/themes $@
