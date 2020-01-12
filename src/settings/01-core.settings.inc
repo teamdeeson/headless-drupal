@@ -1,8 +1,8 @@
 <?php
 
 // @codingStandardsIgnoreFile
-$settings['skip_permissions_hardening'] = TRUE;
 
+$settings['skip_permissions_hardening'] = TRUE;
 
 /**
  * @file
@@ -90,7 +90,12 @@ $settings['skip_permissions_hardening'] = TRUE;
  * ];
  * @endcode
  */
-$databases = [];
+$databases['default']['default'] = array (
+  'database' => '../local.sqlite',
+  'prefix' => '',
+  'namespace' => 'Drupal\\Core\\Database\\Driver\\sqlite',
+  'driver' => 'sqlite',
+);
 
 /**
  * Customizing database settings.
@@ -239,7 +244,7 @@ $databases = [];
  * directory in the public files path. The setting below allows you to set
  * its location.
  */
-# $settings['config_sync_directory'] = '/directory/outside/webroot';
+$settings['config_sync_directory'] = '../config/default';
 
 /**
  * Settings:
@@ -268,7 +273,7 @@ $databases = [];
  *   $settings['hash_salt'] = file_get_contents('/home/example/salt.txt');
  * @endcode
  */
-$settings['hash_salt'] = 'lSwLLeOiuaq9-ECYcawxXEjF1nYv70F-5aBys2VjxE5B-hXs9Wu7MPMb5_XKal-jrwNbHLJBIQ';
+$settings['hash_salt'] = '';
 
 /**
  * Deployment identifier.
@@ -757,9 +762,3 @@ $settings['entity_update_backup'] = TRUE;
 # if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
 #   include $app_root . '/' . $site_path . '/settings.local.php';
 # }
-$databases['default']['default'] = array (
-  'database' => '../local.sqlite',
-  'prefix' => '',
-  'namespace' => 'Drupal\\Core\\Database\\Driver\\sqlite',
-  'driver' => 'sqlite',
-);
