@@ -22,7 +22,7 @@ if [ "${GIT_RELAY_SRC_REPO_PATH}" != "" ]; then
 elif [ "${BITBUCKET_CLONE_DIR}" != "" ]; then
   src_repo_path="${BITBUCKET_CLONE_DIR}"
 elif [ "${GITHUB_WORKSPACE}" != "" ]; then
-  src_repo_path="${GITHUB_WORKSPACE}
+  src_repo_path="${GITHUB_WORKSPACE}"
 fi
 
 relay_type="snapshot"
