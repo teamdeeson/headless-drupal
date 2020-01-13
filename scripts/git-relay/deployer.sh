@@ -40,6 +40,19 @@ if [ "${GIT_RELAY_GIT_EMAIL}" != "" ]; then
   git_email="${GIT_RELAY_GIT_EMAIL}"
 fi
 
+branch=""
+if [ -n "${BITBUCKET_BRANCH}" ]; then
+  branch="${BITBUCKET_BRANCH}"
+elif [ ${GITHUB_REF} == refs/head/* ]; then
+  branch=${GITHUB_REF:10}
+fi
+
+tag=""
+if [ -n "${BITBUCKET_TAG}" ]; then
+  tag="${BITBUCKET_TAG}"
+elif [ ${GITHUB_REF} == refs/tags/* ]; then
+  tag=${GITHUB_REF:10}
+fi
 
 #
 # Configiure the deployment SSH keys
@@ -85,25 +98,27 @@ chmod -x .git/hooks/*
 #
 
 echo "GITHUB_REF: ${GITHUB_REF}"
+echo "branch: ${branch}"
+echo "tag: ${tag}"
 echo "PWD: ${PWD}"
 
 # If there is a tag, push it up.
-if [ -n "${BITBUCKET_TAG}" ]; then
+if [ -n "${tag}" ]; then
   if [ "${relay_type}" = "mirror" ]; then
-    ${script_path}/git-relay.sh mirror tag -- --src-repo-path="${src_repo_path}" --dest-repo-url="${deploy_url}" --tag-name=${BITBUCKET_TAG} --git-username=${git_username} --git-email=${git_email}
+    ${script_path}/git-relay.sh mirror tag -- --src-repo-path="${src_repo_path}" --dest-repo-url="${deploy_url}" --tag-name=${tag} --git-username=${git_username} --git-email=${git_email}
   elif [ "${relay_type}" = "snapshot" ]; then
-    ${script_path}/git-relay.sh snapshot tag -- --src-repo-path="${src_repo_path}" --dest-repo-url="${deploy_url}" --tag-name=${BITBUCKET_TAG} --git-username=${git_username} --git-email=${git_email}
+    ${script_path}/git-relay.sh snapshot tag -- --src-repo-path="${src_repo_path}" --dest-repo-url="${deploy_url}" --tag-name=${tag} --git-username=${git_username} --git-email=${git_email}
   elif [ "${relay_type}" = "subtree-snapshot" ]; then
-    ${script_path}/git-relay.sh subtree-snapshot tag -- --src-repo-path="${src_repo_path}" --dest-repo-url="${deploy_url}" --tag-name=${BITBUCKET_TAG} --git-username=${git_username} --git-email=${git_email}
+    ${script_path}/git-relay.sh subtree-snapshot tag -- --src-repo-path="${src_repo_path}" --dest-repo-url="${deploy_url}" --tag-name=${tag} --git-username=${git_username} --git-email=${git_email}
   else
     echo "Relay type '${relay_type}' not recognised"
     exit 1
   fi
 fi
 
-if [ -n "${BITBUCKET_BRANCH}" ]; then
+if [ -n "${branch}" ]; then
   set +e
-  target_branch=$(php -f ${script_path}/deployment-manager.php -- ${BITBUCKET_BRANCH} "${src_repo_path}/deployment-manager.json")
+  target_branch=$(php -f ${script_path}/deployment-manager.php -- ${branch} "${src_repo_path}/deployment-manager.json")
   dm_exit_status=$?
 
   if [ ${dm_exit_status} != 0 ]; then

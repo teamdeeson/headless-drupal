@@ -8,7 +8,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
+      with:
+        ref: ${{ GITHUB_REF }}
 
     #- name: Validate composer.json and composer.lock
     #  run: composer validate
@@ -18,7 +20,7 @@ jobs:
 
     - name: pwd
       run: pwd
-    
+
     - name: git status
       run: git status
 
@@ -30,4 +32,4 @@ jobs:
 
     # - name: Run test suite
     #   run: composer run-script test
-    
+
