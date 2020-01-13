@@ -12,14 +12,11 @@ function callFunction<T>(name: string, ...args: unknown[]): Promise<T> {
 }
 
 const api: Api = {
-  loadArrangement(eventId) {
-    return callFunction('loadArrangement', eventId);
+  getContentOrRedirectByUrl(path) {
+    return callFunction('getContentOrRedirectByUrl', path);
   },
   listArticles() {
     return callFunction('listArticles');
-  },
-  loadArticle(id, options) {
-    return callFunction('loadArticle', id, options);
   },
 };
 export default api;

@@ -1,10 +1,11 @@
 import React from 'react';
-import { Link, Redirect } from '@reach/router';
+import { Link } from '@reach/router';
 import { useInitialProps } from '../useInitialProps';
-import { Api, Tutorial, JsonAPIDocument, JsonAPIEntity, ContentType } from '../api/interface';
+import { Api, JsonAPIDocument, ContentType, Paragrah } from '../api/interface';
 import { Routable } from '../Routable';
 import TextAndImage from '../components/TextAndImage';
 import { find } from '../drupalFields';
+import drupalTextAndImage from '../components/TextAndImage/drupalTextAndImage';
 
 interface Params {
   '*': string;
@@ -14,20 +15,15 @@ function getInitialProps(api: Api, { '*': path }: Params): Promise<JsonAPIDocume
   return api.getContentOrRedirectByUrl(path);
 }
 
-function Paragraph({ data, included }) {
+function Paragraph({ data, doc }: { data: Paragrah; doc: JsonAPIDocument<ContentType> }) {
   switch (data.type) {
-    // case 'paragraph--text': {
-    // }
-    case 'paragraph--text_and_image': {
-      return <TextAndImage.fromDrupal data={data} included={included} />;
+    case 'paragraph--image_text': {
+      return <TextAndImage {...drupalTextAndImage(data, doc)} />;
     }
-    // case 'paragraph--slice_links': {
-    // }
     default: {
       return <pre>{JSON.stringify(data)}</pre>;
     }
   }
-  return null;
 }
 
 const BasicPage: Routable<Params, JsonAPIDocument<ContentType>> = ({ '*': path }) => {
@@ -38,29 +34,20 @@ const BasicPage: Routable<Params, JsonAPIDocument<ContentType>> = ({ '*': path }
 
   // TODO handle 404s with a server side status.
 
-  if (doc && doc.data.type === 'tutorials') {
+  if (doc && doc.data.type === 'articles') {
     return (
       <>
         <article>
           <h1>{doc.data.attributes.title}</h1>
           {doc.data.relationships.slices.data.map(slice => (
-            <Paragraph key={slice.id} data={find(slice.id, doc.included!)} included={doc.included} />
+            <Paragraph key={slice.id} data={find(slice.id, doc.included!)} doc={doc} />
           ))}
         </article>
-        <Link to="..">Back</Link>
-      </>
-    );
-  } else if (doc && doc.data.type === 'page') {
-    return (
-      <>
-        <article>
-          <h1>{doc.data.attributes.title}</h1>
-        </article>
+        <Link to="/articles">Back</Link>
       </>
     );
   }
-
-  return null;
+  return <div>Only rendering articles at this time</div>;
 };
 
 BasicPage.getInitialProps = getInitialProps;

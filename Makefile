@@ -32,6 +32,9 @@ install-drupal: local.sqlite \
 
 local.sqlite:
 	./vendor/bin/drush si --yes --db-url=sqlite://../local.sqlite
+	# TODO install is a bit messy; you have to remove the line from settings.php that provides a config dir so that Drush doesn't try an import during install.
+	# Then you can install and run an import safely after that.
+	drush cim -y
 
 docroot/sites/default/files/tmp/:
 	mkdir -p docroot/sites/default/files/tmp/
