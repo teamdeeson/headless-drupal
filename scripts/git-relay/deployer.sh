@@ -43,14 +43,14 @@ fi
 branch=""
 if [ -n "${BITBUCKET_BRANCH}" ]; then
   branch="${BITBUCKET_BRANCH}"
-elif [ ${GITHUB_REF} == refs/head/* ]; then
+elif [[ ${GITHUB_REF} == refs/head/* ]]; then
   branch=${GITHUB_REF:10}
 fi
 
 tag=""
 if [ -n "${BITBUCKET_TAG}" ]; then
   tag="${BITBUCKET_TAG}"
-elif [ ${GITHUB_REF} == refs/tags/* ]; then
+elif [[ ${GITHUB_REF} == refs/tags/* ]]; then
   tag=${GITHUB_REF:10}
 fi
 
