@@ -10,7 +10,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       with:
-        ref: ${{ GITHUB_REF }}
+        ref: ${{ github.ref }}
 
     #- name: Validate composer.json and composer.lock
     #  run: composer validate
