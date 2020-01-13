@@ -44,3 +44,6 @@ docroot/modules/custom:
 
 docroot/themes/custom:
 	ln -s ../../src/themes $@
+
+deploy-drupal:
+	./scripts/git-relay/deployer.sh

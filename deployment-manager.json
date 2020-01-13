@@ -1,0 +1,9 @@
+{
+  "blacklist": [
+    "^feature/.*"
+  ],
+  "whitelist": [
+    "master",
+    "develop"
+  ]
+}
