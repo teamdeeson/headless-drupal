@@ -105,6 +105,10 @@ echo "GITHUB_REF: ${GITHUB_REF}"
 echo "branch: ${branch}"
 echo "tag: ${tag}"
 echo "PWD: ${PWD}"
+echo "src_repo_path: ${src_repo_path}"
+echo "deploy_url: ${deploy_url}"
+echo "target_branch: ${target_branch}"
+echo "relay_type: ${relay_type}"
 
 # If there is a tag, push it up.
 if [ -n "${tag}" ]; then
