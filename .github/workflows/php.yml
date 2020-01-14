@@ -26,6 +26,11 @@ jobs:
 
     - name: deploy to Pantheon
       run: make deploy-drupal
+      env:
+        DEPLOY_URL: ${{ secrets.DEPLOY_URL }}
+        DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+        GIT_RELAY_TYPE: ${{ secrets.GIT_RELAY_TYPE }}
+        DEPLOY_PRIVATE_KEY: ${{ secrets.DEPLOY_PRIVATE_KEY }}
 
     # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
     # Docs: https://getcomposer.org/doc/articles/scripts.md

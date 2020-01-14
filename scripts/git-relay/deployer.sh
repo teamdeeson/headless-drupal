@@ -107,6 +107,8 @@ echo "tag: ${tag}"
 echo "PWD: ${PWD}"
 echo "src_repo_path: ${src_repo_path}"
 echo "deploy_url: ${deploy_url}"
+echo "DEPLOY_HOST: ${DEPLOY_HOST}"
+echo "GIT_RELAY_TYPE: ${GIT_RELAY_TYPE}"
 echo "target_branch: ${target_branch}"
 echo "relay_type: ${relay_type}"
 
