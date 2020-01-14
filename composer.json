@@ -45,21 +45,18 @@
       ]
     },
     "drupal-scaffold": {
-      "source": [
-        "https://git.drupalcode.org/project/drupal/raw/{version}/{path}",
-        "https://raw.githubusercontent.com/drupal/drupal/{version}/{path}"
-      ],
-      "initial": {
-        "sites/default/default.services.yml": "sites/default/services.yml",
-        "sites/default/default.settings.php": "sites/default/settings.php",
-        ".htaccess": ".htaccess",
-        "robots.txt": "robots.txt"
-      },
-      "omit-defaults": false,
+      "source": "https://raw.githubusercontent.com/pantheon-systems/drops-8/{version}/{path}",
       "includes": [
-        "index.php",
-        "sites/default/default.settings.php",
-        "sites/default/default.services.yml"
+        "sites/default/default.services.pantheon.preproduction.yml",
+        "sites/default/settings.pantheon.php"
+      ],
+      "excludes": [
+        ".csslintrc",
+        ".editorconfig",
+        ".eslintignore",
+        ".eslintrc.json",
+        ".htaccess",
+        "web.config"
       ]
     },
     "enable-patching": true,
@@ -73,9 +70,6 @@
   "scripts": {
     "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
     "pre-install-cmd": [
-      "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
-    ],
-    "pre-update-cmd": [
       "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
     ],
     "post-install-cmd": [
