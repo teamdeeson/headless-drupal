@@ -109,7 +109,6 @@ echo "src_repo_path: ${src_repo_path}"
 echo "deploy_url: ${deploy_url}"
 echo "DEPLOY_HOST: ${DEPLOY_HOST}"
 echo "GIT_RELAY_TYPE: ${GIT_RELAY_TYPE}"
-echo "target_branch: ${target_branch}"
 echo "relay_type: ${relay_type}"
 
 # If there is a tag, push it up.
@@ -140,6 +139,8 @@ if [ -n "${branch}" ]; then
   fi
 
   set -e
+  echo "target_branch: ${target_branch}"
+
   if [ "${relay_type}" = "mirror" ]; then
     ${script_path}/git-relay.sh mirror -- --src-repo-path="${src_repo_path}" --dest-repo-url="${deploy_url}" --dest-repo-branch=${target_branch} --git-username=${git_username} --git-email=${git_email}
   elif [ "${relay_type}" = "snapshot" ]; then
