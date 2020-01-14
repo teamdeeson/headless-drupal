@@ -42,19 +42,15 @@ fi
 
 branch=""
 if [ -n "${BITBUCKET_BRANCH}" ]; then
-  echo "here1"
   branch="${BITBUCKET_BRANCH}"
 elif [[ ${GITHUB_REF} == refs/heads/* ]]; then
-  echo "here2"
   branch=${GITHUB_REF:11}
 fi
 
 tag=""
 if [ -n "${BITBUCKET_TAG}" ]; then
-  echo "here3"
   tag="${BITBUCKET_TAG}"
 elif [[ ${GITHUB_REF} == refs/tags/* ]]; then
-  echo "here4"
   tag=${GITHUB_REF:10}
 fi
 
