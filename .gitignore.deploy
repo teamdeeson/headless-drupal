@@ -1,4 +1,5 @@
 # What should be ignored when relaying PHP code to Pantheon
+# and so, by omission, what should be relayed
 local.sqlite*
 node_modules
 keys
@@ -7,3 +8,15 @@ yarn-error.log
 *.swp
 src/frontend
 scripts/git-relay
+.github
+.vscode
+.storybook
+.babelrc.js
+.browserslistrc
+.eslintrc
+.prettierrc.js
+package.json
+postcss.config.js
+tsconfig.json
+webpack.config.js
+yarn.lock
