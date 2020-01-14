@@ -8,7 +8,7 @@
  */
 
 // Detect the environment.
-// require_once dirname(DRUPAL_ROOT) . '/src/settings/environment.inc';
+require_once dirname(DRUPAL_ROOT) . '/src/settings/environment.inc';
 
 // Configure the application.
 foreach (glob(dirname(DRUPAL_ROOT) . '/src/settings/*.settings.inc') as $file) {
