@@ -1,0 +1,9 @@
+# What should be ignored when relaying PHP code to Pantheon
+local.sqlite*
+node_modules
+keys
+dist
+yarn-error.log
+*.swp
+src/frontend
+scripts/git-relay
