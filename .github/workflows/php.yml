@@ -24,11 +24,8 @@ jobs:
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress --no-suggest
 
-    - name: pwd
-      run: pwd
-
-    - name: git status
-      run: git status
+    - name: Link the docroot to web for Pantheon
+      run: ln -s docroot web
 
     - name: deploy to Pantheon
       run: make deploy-drupal
