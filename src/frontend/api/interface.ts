@@ -3,6 +3,14 @@ export interface Api {
   listArticles(): Promise<JsonAPIDocument<Article[]>>;
 }
 
+export interface JsonAPIEntity {
+  type: string;
+  id: string;
+  links: { self: { href: string } };
+  attributes: {};
+  relationships: {};
+}
+
 interface Content extends JsonAPIEntity {
   type: string;
   attributes: {
@@ -26,18 +34,14 @@ export interface Tutorial extends Content {
     topic: string;
   };
   relationships: {
-    slices: {
-      data: { type: string; id: string }[];
-    };
+    slices: JsonApiRelationshipList<Paragrah['type']>;
   };
 }
 
 export interface Article extends Content {
   type: 'articles';
   relationships: {
-    slices: {
-      data: { type: string; id: string }[];
-    };
+    slices: JsonApiRelationshipList<Paragrah['type']>;
   };
 }
 
@@ -49,19 +53,12 @@ export interface ImageAndText extends JsonAPIEntity {
     text: { value: string; format: string; processed: string };
   };
   relationships: {
-    image: {
-      data: { type: string; id: string };
-      links: { self: { href: string } };
-    };
+    image: JsonApiRelationship<'images'>;
   };
 }
 
-export type Paragrah = ImageAndText;
-
-export interface DrupalLinkField {
-  uri: string;
-  title: string;
-  options: [];
+export interface Text extends JsonAPIEntity {
+  type: 'paragraph--text';
 }
 
 export interface ImageMedia extends JsonAPIEntity {
@@ -70,10 +67,7 @@ export interface ImageMedia extends JsonAPIEntity {
     name: string;
   };
   relationships: {
-    imageFile: {
-      data: { type: string; id: string };
-      links: { self: { href: string } };
-    };
+    imageFile: JsonApiRelationship<'files'>;
   };
 }
 
@@ -87,29 +81,43 @@ export interface ImageFile extends JsonAPIEntity {
   };
 }
 
-export interface JsonAPIEntity {
-  type: string;
-  id: string;
-  links: { self: { href: string } };
-  attributes: {};
-  relationships: {};
+export type Paragrah = ImageAndText | Text;
+
+export type AllEntities = {
+  [k: string]: JsonAPIEntity;
+  page: BasicPage;
+  tutorials: Tutorial;
+  articles: Article;
+  'paragraph--image_text': ImageAndText;
+  'paragraph--text': Text;
+  images: ImageMedia;
+  files: ImageFile;
+};
+
+export interface DrupalLinkField {
+  uri: string;
+  title: string;
+  options: [];
 }
 
-export interface JsonAPIDocument<T = JsonAPIEntity> {
+export interface JsonAPIDocument<T extends JsonAPIEntity | JsonAPIEntity[], I extends AllEntities = AllEntities> {
   jsonapi: { version: '1.0' };
   data: T;
-  included?: JsonAPIEntity[];
+  included: I[Partial<keyof I>][];
   links: { self: { href: string } };
 }
 
-interface JsonApiRelationship {
-  data: {
-    type: string;
-    id: string;
-  };
+export interface JsonAPIEntityStub<T extends string = string> {
+  type: T;
+  id: string;
+}
+
+export interface JsonApiRelationship<T extends string = string> {
+  data: JsonAPIEntityStub<T>;
   links: { self: { href: string } };
 }
 
-// thanks! https://github.com/mike-north/json-typescript/blob/master/index.ts
-// type JsonApiPrimitive = string | number | boolean | null;
-// type JsonApiValue = JsonApiPrimitive | JsonApiPrimitive[] | { [k: string]: JsonApiPrimitive };
+export interface JsonApiRelationshipList<T extends string = string> {
+  data: JsonAPIEntityStub<T>[];
+  links: { self: { href: string } };
+}

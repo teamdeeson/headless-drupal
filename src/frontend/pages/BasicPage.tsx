@@ -40,7 +40,7 @@ const BasicPage: Routable<Params, JsonAPIDocument<ContentType>> = ({ '*': path }
         <article>
           <h1>{doc.data.attributes.title}</h1>
           {doc.data.relationships.slices.data.map(slice => (
-            <Paragraph key={slice.id} data={find(slice.id, doc.included!)} doc={doc} />
+            <Paragraph key={slice.id} data={find(slice, doc.included)} doc={doc} />
           ))}
         </article>
         <Link to="/articles">Back</Link>
