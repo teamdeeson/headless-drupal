@@ -1,4 +1,4 @@
-/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable eslint-comments/disable-enable-pair, @typescript-eslint/no-var-requires, import/no-extraneous-dependencies */
 const postcssImport = require('postcss-import');
 const postcssMixins = require('postcss-mixins');
 const postcssNested = require('postcss-nested');
@@ -10,7 +10,7 @@ const postcssInlineSvg = require('postcss-inline-svg');
 const autoprefixer = require('autoprefixer');
 
 module.exports = {
-  plugins: () => [
+  plugins: [
     postcssImport,
     postcssMixins,
     postcssNested,
