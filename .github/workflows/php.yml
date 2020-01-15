@@ -1,6 +1,11 @@
-name: PHP Composer
+name: Build and deploy Drupal
 
-on: [push]
+on:
+  # Trigger the workflow on push or pull request,
+  # but only for the master branch
+  push:
+    branches:
+      - master
 
 jobs:
   build:
@@ -8,20 +13,31 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
+      with:
+        ref: ${{ github.ref }}
+        fetch-depth: 0
 
-    #- name: Validate composer.json and composer.lock
-    #  run: composer validate
+    - name: Validate composer.json and composer.lock
+      run: composer validate
 
-    #- name: Install dependencies
-    #  run: composer install --prefer-dist --no-progress --no-suggest
-    
-    - name: deploy
-      run: git status
+    - name: Install dependencies
+      run: composer install --prefer-dist --no-progress --no-suggest
+
+    - name: Link the docroot to web for Pantheon
+      run: ln -s docroot web
+
+    - name: deploy to Pantheon
+      run: make deploy-drupal
+      env:
+        DEPLOY_URL: ${{ secrets.DEPLOY_URL }}
+        DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+        GIT_RELAY_TYPE: ${{ secrets.GIT_RELAY_TYPE }}
+        DEPLOY_PRIVATE_KEY: ${{ secrets.DEPLOY_PRIVATE_KEY }}
 
     # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
     # Docs: https://getcomposer.org/doc/articles/scripts.md
 
     # - name: Run test suite
     #   run: composer run-script test
-    
+
