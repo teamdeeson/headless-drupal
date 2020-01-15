@@ -60,7 +60,11 @@
       ]
     },
     "enable-patching": true,
-    "patches": {}
+    "patches": {
+      "drupal/core" : {
+        "Allow installation through the UI with existing config and a profile with its own config": "https://www.drupal.org/files/issues/2019-05-24/3050419-14.patch"
+      }
+    }
   },
   "config": {
     "preferred-install": {
