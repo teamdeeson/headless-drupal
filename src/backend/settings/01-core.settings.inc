@@ -208,7 +208,7 @@ $settings['skip_permissions_hardening'] = TRUE;
  * directory in the public files path. The setting below allows you to set
  * its location.
  */
-//$settings['config_sync_directory'] = '../config/default';
+$settings['config_sync_directory'] = 'profiles/contrib/contenta_jsonapi/config/sync';
 
 /**
  * Settings:
@@ -237,7 +237,7 @@ $settings['skip_permissions_hardening'] = TRUE;
  *   $settings['hash_salt'] = file_get_contents('/home/example/salt.txt');
  * @endcode
  */
-$settings['hash_salt'] = '';
+$settings['hash_salt'] = 'TOI0qIScO6ZjTvFchwvH0xXYuVS4SpJXtKMs3OMAflhUD0gxBjEJ7H6iq37QX4HF2fTNoKZ12A';
 
 /**
  * Deployment identifier.

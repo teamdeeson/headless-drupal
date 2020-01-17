@@ -27,12 +27,11 @@ if (SETTINGS_ENVIRONMENT == D_ENVIRONMENT_LOCAL && SETTINGS_PLATFORM == D_PLATFO
   $base_url = $base_protocol . '://' . SETTINGS_INSTANCE;
 
   // File paths...
-  $conf['file_temporary_path'] = '/tmp';
+  $settings['file_temp_path'] = '/tmp';
   $settings['file_public_path'] = 'sites/default/files';
-  $settings['file_private_path'] = '/private';
+  $settings['file_private_path'] = '../.persist/private';
 
   // Configure Redis.
-
   $settings['redis.connection']['host'] = 'redis';
   $settings['redis.connection']['port'] = '6379';
   $settings['redis.connection']['password'] = '';

@@ -58,24 +58,50 @@ else
 	drush cim -y
 endif
 
+.persist/public:
+ifeq ("${USE_DOCKER}","1")
+	mkdir -p .persist/public
+endif
+
+.persist/private:
+ifeq ("${USE_DOCKER}","1")
+	mkdir -p .persist/private
+endif
+
+docroot/sites/default/files/:
+	ln -s ../../../.persist/public docroot/sites/default/files:
+
 docroot/sites/default/files/tmp/:
 	mkdir -p docroot/sites/default/files/tmp/
 
 docroot/sites/default/settings.php:
-	ln -s ../../../src/settings/settings.php docroot/sites/default/settings.php
+	ln -s ../../../src/backend/settings/settings.php docroot/sites/default/settings.php
 
 docroot/modules/custom:
-	ln -s ../../src/modules $@
+	ln -s ../../src/backend/modules $@
 
 docroot/themes/custom:
-	ln -s ../../src/themes $@
+	ln -s ../../src/backend/themes $@
+
+docroot/profiles/custom:
+	ln -s ../../src/backend/profiles $@
 
 deploy-drupal:
 	./scripts/git-relay/deployer.sh
 
 # Commands which get run from composer.json scripts section.
 composer--post-install-cmd: composer--post-update-cmd
-composer--post-update-cmd: docroot/sites/default/files/tmp/ \
+composer--post-update-cmd: .persist/public \
+                                .persist/private \
+                                docroot/sites/default/files/tmp/ \
                                 docroot/sites/default/settings.php \
                                 docroot/modules/custom \
+                                docroot/profiles/custom \
                                 docroot/themes/custom;
+
+sql-cli:
+ifeq ("${USE_DOCKER}","1")
+	@docker-compose exec ${DB_HOST} mysql -u${DB_USER} -p${DB_PASSWORD} ${DB_NAME}
+else
+	@echo "You need to use whatever sqlite uses..."
+endif
