@@ -61,9 +61,6 @@
     },
     "enable-patching": true,
     "patches": {
-      "drupal/core" : {
-        "Allow installation through the UI with existing config and a profile with its own config": "https://www.drupal.org/files/issues/2019-05-24/3050419-14.patch"
-      }
     }
   },
   "config": {
@@ -77,10 +74,12 @@
       "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
     ],
     "post-install-cmd": [
-      "@drupal-scaffold"
+      "@drupal-scaffold",
+      "make composer--post-install-cmd"
     ],
     "post-update-cmd": [
-      "@drupal-scaffold"
+      "@drupal-scaffold",
+      "make composer--post-update-cmd"
     ]
   }
 }

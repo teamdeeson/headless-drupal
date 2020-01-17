@@ -6,3 +6,5 @@ docroot
 dist
 yarn-error.log
 *.swp
+.idea
+.persist

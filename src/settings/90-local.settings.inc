@@ -4,7 +4,7 @@
  *
  */
 
-if (SETTINGS_HOSTING === 'local') {
+if (SETTINGS_PLATFORM === 'local') {
   $databases['default']['default'] = array (
     'database' => '../local.sqlite',
     'prefix' => '',

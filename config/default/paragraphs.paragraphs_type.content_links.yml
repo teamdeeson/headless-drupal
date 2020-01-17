@@ -1,9 +1,0 @@
-uuid: c98aeb97-afed-4316-ae74-93c86187f8c4
-langcode: en
-status: true
-dependencies: {  }
-id: content_links
-label: 'Content links'
-icon_uuid: null
-description: ''
-behavior_plugins: {  }

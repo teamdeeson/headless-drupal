@@ -14,3 +14,5 @@ require_once dirname(DRUPAL_ROOT) . '/src/settings/environment.inc';
 foreach (glob(dirname(DRUPAL_ROOT) . '/src/settings/*.settings.inc') as $file) {
   require_once $file;
 }
+
+//$settings['config_sync_directory'] = 'profiles/contrib/contenta_jsonapi/config/sync';

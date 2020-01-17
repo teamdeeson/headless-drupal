@@ -1,9 +1,0 @@
-uuid: b39eb7ee-5d48-4994-bf3d-9f953de94fe3
-langcode: en
-status: true
-dependencies: {  }
-id: text
-label: Text
-icon_uuid: null
-description: ''
-behavior_plugins: {  }
