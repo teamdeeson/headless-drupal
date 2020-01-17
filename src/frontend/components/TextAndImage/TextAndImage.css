@@ -1,17 +1,14 @@
 .text-and-image {
-    display: flex;
-    img {
-        width:100%;
-        height:auto;
-        display:block;
-    }
-    &__text {
-        width:50%;
-    }
-    &__image {
-        width:50%;
-    }
-}
-.text-and-image__image {
-    width:50%;
+  display: flex;
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  &__text {
+    width: 50%;
+  }
+  &__image {
+    width: 50%;
+  }
 }
