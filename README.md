@@ -12,21 +12,32 @@ If correctly setup then both `which yarn` and `which composer` should return a f
 
 ## Getting Started.
 
+### Using Docker for local development.
+
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 ```
 git clone git@github.com/teamdeeson/headless-drupal
 cd headless-drupal
+echo "USE_DOCKER=1" > .local.env
 make
 ```
 
-Executing make will download the project dependencies and install Drupal into an sqlite db.
+Executing make will download the project dependencies and install Drupal into a Docker container.
 
-The frontend is then available at: https://localhost:3000
+The frontend is then available at: [https://headless-drupal.localhost](https://headless-drupal.localhost)
 
-The Drupal backend CMS is available at: https://localhost:8888
+The Drupal backend CMS is available at: [https://cms.headless-drupal.localhost](https://cms.headless-drupal.localhost)
 
-## Every other time.
+### Not using Docker for local development.
+
+You can optionally not use Docker locally and install Drupal into an SQLite DB by setting `USE_DOCKER=0` in the relevant line above.
+
+The frontend is then available at: [https://localhost:3000](https://localhost:3000)
+
+The Drupal backend CMS is available at: [https://localhost:8888](https://localhost:8888)
+
+## Starting every other time.
 
 Once installed, you use the following command to start the project without installing all the dependencies:
 
