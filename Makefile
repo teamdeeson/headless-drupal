@@ -1,21 +1,37 @@
 include .env
 
-# Decide if we're using Docker or not.
-ifneq ("$(wildcard ${PWD}/localdev)","")
-USE_DOCKER = 0
-else
-USE_DOCKER = 1
-endif
+#
+# Optionally include a .env.local file to override the defaults in .env
+#
+-include .env.local
+
+USE_DOCKER ?= 0
+
+#
+# Ensure the local environment has the right binaries installed.
+#
 
 REQUIRED_BINS := composer npm node php yarn
 $(foreach bin,$(REQUIRED_BINS),\
     $(if $(shell command -v $(bin) 2> /dev/null),,$(error Please install `$(bin)`)))
 
-default: install start
+#
+# Default is what happens if you only type make.
+#
+
+default: install build start
+
+#
+# Bring in the external project dependencies.
+#
 
 install:
 	composer install
 	yarn
+
+#
+# Start the local development server.
+#
 
 start:
 ifeq ("${USE_DOCKER}","1")
@@ -39,6 +55,29 @@ endif
 
 restart: stop start
 
+#
+# Build stages: Setup and configure the application for the environment.
+#
+
+build: install-drupal
+
+install-drupal:
+ifeq ("${USE_DOCKER}","1")
+	mv src/backend/settings/99-installation.settings.inc.hide src/backend/settings/99-installation.settings.inc
+	./drush.wrapper @docker si contenta_jsonapi --yes
+	mv src/backend/settings/99-installation.settings.inc src/backend/settings/99-installation.settings.inc.hide
+	./drush.wrapper @docker cim --yes
+else
+	mv src/backend/settings/99-installation.settings.inc.hide src/backend/settings/99-installation.settings.inc
+	./vendor/bin/drush si contenta_jsonapi --yes --db-url=sqlite://../local.sqlite
+	mv src/backend/settings/99-installation.settings.inc src/backend/settings/99-installation.settings.inc.hide
+	./vendor/bin/drush cim --yes
+endif
+
+#
+# Linting / testing / formatting.
+#
+
 lint:
 	./node_modules/.bin/tsc && ./node_modules/.bin/eslint --ext .js,.jsx,.ts,.tsx ./src/frontend/
 
@@ -48,15 +87,9 @@ test:
 format:
 	./node_modules/.bin/prettier ./src/frontend/**/*.{ts,tsx,js,jsx} --write
 
-install-drupal:
-ifeq ("${USE_DOCKER}","1")
-	@echo "Use drush to import a database, e.g. drush @dev sql-dump | drush @docker sql-cli"
-else
-	./vendor/bin/drush si --yes --db-url=sqlite://../local.sqlite
-	# TODO install is a bit messy; you have to remove the line from settings.php that provides a config dir so that Drush doesn't try an import during install.
-	# Then you can install and run an import safely after that.
-	drush cim -y
-endif
+#
+# Generate project symlinks and other disposable assets and wiring.
+#
 
 .persist/public:
 ifeq ("${USE_DOCKER}","1")
@@ -69,7 +102,9 @@ ifeq ("${USE_DOCKER}","1")
 endif
 
 docroot/sites/default/files/:
-	ln -s ../../../.persist/public docroot/sites/default/files:
+ifeq ("${USE_DOCKER}","1")
+	ln -s ../../../.persist/public docroot/sites/default/files
+endif
 
 docroot/sites/default/files/tmp/:
 	mkdir -p docroot/sites/default/files/tmp/
@@ -86,10 +121,10 @@ docroot/themes/custom:
 docroot/profiles/custom:
 	ln -s ../../src/backend/profiles $@
 
-deploy-drupal:
-	./scripts/git-relay/deployer.sh
-
+#
 # Commands which get run from composer.json scripts section.
+#
+
 composer--post-install-cmd: composer--post-update-cmd
 composer--post-update-cmd: .persist/public \
                                 .persist/private \
@@ -98,6 +133,10 @@ composer--post-update-cmd: .persist/public \
                                 docroot/modules/custom \
                                 docroot/profiles/custom \
                                 docroot/themes/custom;
+
+#
+# Helper SQL command line access command.
+#
 
 sql-cli:
 ifeq ("${USE_DOCKER}","1")

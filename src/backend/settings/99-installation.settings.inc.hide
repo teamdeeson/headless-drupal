@@ -1,0 +1,10 @@
+<?php
+
+// @codingStandardsIgnoreFile
+
+/**
+ * @file
+ * These setting only apply when running `make install-drupal`
+ */
+
+$settings['config_sync_directory'] = 'profiles/contrib/contenta_jsonapi/config/sync';

@@ -28,7 +28,7 @@ jobs:
       run: ln -s docroot web
 
     - name: deploy to Pantheon
-      run: make deploy-drupal
+      run: ./scripts/git-relay/deployer.sh
       env:
         DEPLOY_URL: ${{ secrets.DEPLOY_URL }}
         DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}

@@ -7,3 +7,13 @@ docker:
     drush-script: /var/www/html/vendor/bin/drush
   root: /var/www/html/docroot
   uri: cms.headless-drupal.localhost
+'*':
+  host: appserver.${env-name}.5a5f2810-3a03-4c68-9e75-e07705cd58f1.drush.in
+  paths:
+    files: files
+    drush-script: drush9
+  uri: ${env-name}-deeson-d8-quickstart-pipelines-test.pantheonsite.io
+  user: ${env-name}.5a5f2810-3a03-4c68-9e75-e07705cd58f1
+  ssh:
+    options: '-p 2222 -o "AddressFamily inet"'
+    tty: false
