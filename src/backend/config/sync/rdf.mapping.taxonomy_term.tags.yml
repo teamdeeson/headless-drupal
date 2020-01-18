@@ -1,0 +1,25 @@
+uuid: 5f47ff4b-7168-4b96-8f0f-1264510ff157
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.tags
+  enforced:
+    module:
+      - recipes_magazin
+  module:
+    - taxonomy
+_core:
+  default_config_hash: _YqpbUf1-30r--MjVCbSLIfy-pS1FKHPzVI4KyPyhaA
+id: taxonomy_term.tags
+targetEntityType: taxonomy_term
+bundle: tags
+types:
+  - 'schema:Thing'
+fieldMappings:
+  name:
+    properties:
+      - 'schema:name'
+  description:
+    properties:
+      - 'schema:description'

@@ -1,0 +1,22 @@
+uuid: 5919b43e-c8e4-4f05-9893-e9fd95bb3ac3
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - recipes_magazin
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+_core:
+  default_config_hash: RO3row1ggKyKttwZxdKRhtcdVOixnif_kzpkXYZRhLU
+name: Recipe
+type: recipe
+description: 'Add a new recipe to the site.'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

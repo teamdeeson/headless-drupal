@@ -1,0 +1,21 @@
+uuid: 6987e997-bfc8-4194-98e0-8c5f6c7f6c17
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - image
+      - recipes_magazin
+_core:
+  default_config_hash: 5t2E992vo6vMmumNrX_zlKxIKyZoQAH-xcjyxZisb8s
+name: large_21_9
+label: 'Large 21:9 (1440x620)'
+effects:
+  90b69780-6eb1-4cc8-a500-88235ad52f5c:
+    uuid: 90b69780-6eb1-4cc8-a500-88235ad52f5c
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 1440
+      height: 620
+      anchor: center-center

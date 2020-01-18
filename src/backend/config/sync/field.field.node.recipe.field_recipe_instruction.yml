@@ -1,0 +1,26 @@
+uuid: db72736f-5055-4505-9c6a-481ccc73ec00
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_recipe_instruction
+    - node.type.recipe
+  enforced:
+    module:
+      - recipes_magazin
+  module:
+    - text
+_core:
+  default_config_hash: 1ITR3OMtQz5oiHqhrdVfiWFV_P3ZpMfuuSHjNbpuwXg
+id: node.recipe.field_recipe_instruction
+field_name: field_recipe_instruction
+entity_type: node
+bundle: recipe
+label: 'Recipe instruction'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

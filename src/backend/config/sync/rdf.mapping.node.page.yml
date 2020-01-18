@@ -1,0 +1,39 @@
+uuid: 29d0064e-6a43-473f-bae6-c44d75462042
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.page
+  enforced:
+    module:
+      - recipes_magazin
+  module:
+    - node
+_core:
+  default_config_hash: 6Cb4Xsp2w1eLveXomKOFoPBFjarL7xqBI5qUIfM-KVw
+id: node.page
+targetEntityType: node
+bundle: page
+types:
+  - 'schema:WebPage'
+fieldMappings:
+  title:
+    properties:
+      - 'schema:name'
+  created:
+    properties:
+      - 'schema:dateCreated'
+    datatype_callback:
+      callable: 'Drupal\rdf\CommonDataConverter::dateIso8601Value'
+  changed:
+    properties:
+      - 'schema:dateModified'
+    datatype_callback:
+      callable: 'Drupal\rdf\CommonDataConverter::dateIso8601Value'
+  body:
+    properties:
+      - 'schema:text'
+  uid:
+    properties:
+      - 'schema:author'
+    mapping_type: rel

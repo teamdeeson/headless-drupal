@@ -1,0 +1,28 @@
+uuid: f3908080-3917-41be-b3a4-a0ab17114c2a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_preparation_time
+    - node.type.recipe
+  enforced:
+    module:
+      - recipes_magazin
+_core:
+  default_config_hash: JYuyoui4Yp-n_FlGspOMkxc7hWe_RpBYqmH50fvRAFY
+id: node.recipe.field_preparation_time
+field_name: field_preparation_time
+entity_type: node
+bundle: recipe
+label: 'Preparation time'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: ' minutes'
+field_type: integer

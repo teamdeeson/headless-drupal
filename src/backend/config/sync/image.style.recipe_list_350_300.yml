@@ -1,0 +1,15 @@
+uuid: 4f9c78e1-80d0-45a3-b940-9b250fcae2d5
+langcode: en
+status: true
+dependencies: {  }
+name: recipe_list_350_300
+label: 'Recipe List (350×300)'
+effects:
+  b57b5ed8-218f-4604-aee1-818990927b4f:
+    uuid: b57b5ed8-218f-4604-aee1-818990927b4f
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 350
+      height: 300
+      anchor: center-center

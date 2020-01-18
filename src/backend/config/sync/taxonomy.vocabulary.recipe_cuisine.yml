@@ -1,0 +1,13 @@
+uuid: 6d12ebf9-b5f3-431e-8aef-8e779f42ec5c
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - recipes_magazin
+_core:
+  default_config_hash: TtVgi6-7vGCp3_t2kELTQ4btSN4W30aEgvnfgRjO_SY
+name: 'Recipe cuisine'
+vid: recipe_cuisine
+description: ''
+weight: 0

@@ -1,0 +1,13 @@
+uuid: 6aa1b1b0-64cd-44d5-b4a0-02b611133d9f
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.embeddable
+_core:
+  default_config_hash: lNBS97nnow8XNvULL9XuUqdIwfTZYeeCf2ECQije_Lc
+id: node.embeddable
+target_entity_type_id: node
+target_bundle: embeddable
+default_langcode: site_default
+language_alterable: false

@@ -1,0 +1,25 @@
+uuid: fb7d8d2e-7b63-4132-b5c4-04eb728c26d4
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - recipes_magazin
+  module:
+    - node
+    - taxonomy
+_core:
+  default_config_hash: 0RRz4j0Sq_376zZmORlY13zGZosNg6dwGwTPFHsP7sg
+id: node.field_recipe_category
+field_name: field_recipe_category
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

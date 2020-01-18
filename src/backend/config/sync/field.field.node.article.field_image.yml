@@ -1,0 +1,30 @@
+uuid: 7d76f76c-93b3-41de-b536-77399d728c0b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_image
+    - media.type.image
+    - node.type.article
+_core:
+  default_config_hash: URJo3leme1DVI8FQzPV-LJa_RkNd4tUXFfdzS62t1pY
+id: node.article.field_image
+field_name: field_image
+entity_type: node
+bundle: article
+label: Image
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
