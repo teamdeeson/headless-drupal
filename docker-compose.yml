@@ -2,14 +2,14 @@ version: "3"
 
 services:
   mariadb:
-    image: $MARIADB_TAG
-    container_name: "${PROJECT_NAME}_mariadb"
+    image: wodby/mariadb:10.1-2.3.3
+    container_name: "headless-drupal_mariadb"
     stop_grace_period: 30s
     environment:
-      MYSQL_ROOT_PASSWORD: $DB_ROOT_PASSWORD
-      MYSQL_DATABASE: $DB_NAME
-      MYSQL_USER: $DB_USER
-      MYSQL_PASSWORD: $DB_PASSWORD
+      MYSQL_ROOT_PASSWORD: drupal
+      MYSQL_DATABASE: drupal
+      MYSQL_USER: drupal
+      MYSQL_PASSWORD: drupal
 #    ports:
 #      - "3307:3306"
     volumes:
@@ -19,17 +19,17 @@ services:
       - default
 
   php:
-    image: $PHP_TAG
-    container_name: "${PROJECT_NAME}_php"
+    image: wodby/drupal-php:7.2-dev
+    container_name: "headless-drupal_php"
     environment:
       DOCKER_LOCAL: 1
-      D4D_HOSTNAME: ${PROJECT_BASE_URL}
+      D4D_HOSTNAME: headless-drupal.localhost
       PHP_SENDMAIL_PATH: /usr/sbin/sendmail -t -i -S mailhog:1025
-      DB_HOST: $DB_HOST
-      DB_USER: $DB_USER
-      DB_PASSWORD: $DB_PASSWORD
-      DB_NAME: $DB_NAME
-      DB_DRIVER: $DB_DRIVER
+      DB_HOST: mariadb
+      DB_USER: drupal
+      DB_PASSWORD: drupal
+      DB_NAME: drupal
+      DB_DRIVER: mysql
       PHP_XDEBUG: 1
       PHP_XDEBUG_DEFAULT_ENABLE: 1
       PHP_XDEBUG_REMOTE_CONNECT_BACK: 0         # This is needed to respect remote.host setting bellow
@@ -49,8 +49,8 @@ services:
       - default
 
   nginx:
-    image: $NGINX_TAG
-    container_name: "${PROJECT_NAME}_nginx"
+    image: wodby/nginx:1.17-5.5.0
+    container_name: "headless-drupal_nginx"
     depends_on:
       - php
     environment:
@@ -58,7 +58,7 @@ services:
       NGINX_ERROR_LOG_LEVEL: debug
       NGINX_BACKEND_HOST: php
       NGINX_SERVER_ROOT: /var/www/html/docroot
-      NGINX_VHOST_PRESET: $NGINX_VHOST_PRESET
+      NGINX_VHOST_PRESET: drupal8
     volumes:
     #  - ./docker/nginx/drupal8.conf.tmpl:/etc/gotpl/presets/drupal8.conf.tmpl
       - ./:/var/www/html:cached
@@ -70,28 +70,28 @@ services:
     labels:
       - 'traefik.docker.network=proxy'
       - 'traefik.port=80'
-      - 'traefik.frontend.rule=Host:cms.${PROJECT_BASE_URL}'
+      - 'traefik.frontend.rule=Host:cms.headless-drupal.localhost'
 
   mailhog:
     image: mailhog/mailhog
-    container_name: "${PROJECT_NAME}_mailhog"
+    container_name: "headless-drupal_mailhog"
     networks:
       - default
       - proxy
     labels:
       - 'traefik.docker.network=proxy'
       - 'traefik.port=8025'
-      - 'traefik.frontend.rule=Host:mailhog.${PROJECT_BASE_URL}'
+      - 'traefik.frontend.rule=Host:mailhog.headless-drupal.localhost'
 
   redis:
-    container_name: "${PROJECT_NAME}_redis"
-    image: $REDIS_TAG
+    container_name: "headless-drupal_redis"
+    image: wodby/redis:3.2-2.1.0
     networks:
       - default
 
   node:
-    image: $NODE_TAG
-    container_name: "${PROJECT_NAME}_node"
+    image: node:10
+    container_name: "headless-drupal_node"
     volumes:
       - ./:/app:delegated
     working_dir: /app
@@ -104,7 +104,7 @@ services:
     labels:
       - 'traefik.docker.network=proxy'
       - 'traefik.port=3000'
-      - 'traefik.frontend.rule=Host:${PROJECT_BASE_URL}'
+      - 'traefik.frontend.rule=Host:headless-drupal.localhost'
 
 networks:
   proxy:

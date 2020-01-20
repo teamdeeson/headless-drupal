@@ -9,4 +9,4 @@ yarn-error.log
 .idea
 .persist
 *.sql
-.env.local
+.env

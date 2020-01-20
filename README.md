@@ -10,20 +10,24 @@ You will also need [yarn](https://yarnpkg.com/lang/en/) for node and [composer](
 
 If correctly setup then both `which yarn` and `which composer` should return a file path to an executable.
 
-## Getting Started.
-
 ### Using Docker for local development.
 
+You will also need the [Deeson Docker Proxy](https://github.com/teamdeeson/docker-proxy) running.
+
+## Getting Started.
+
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+
+### Using Docker for local development.
 
 ```
 git clone git@github.com/teamdeeson/headless-drupal
 cd headless-drupal
-echo "USE_DOCKER=1" > .local.env
+echo "USE_DOCKER=1" >> .env
 make
 ```
 
-Executing make will download the project dependencies and install Drupal into a Docker container.
+Executing make will download the project dependencies locally then create a Drupal and node runtime environment inside Docker containers.
 
 The frontend is then available at: [https://headless-drupal.localhost](https://headless-drupal.localhost)
 
@@ -31,7 +35,12 @@ The Drupal backend CMS is available at: [https://cms.headless-drupal.localhost](
 
 ### Not using Docker for local development.
 
-You can optionally not use Docker locally and install Drupal into an SQLite DB by setting `USE_DOCKER=0` in the relevant line above.
+```
+git clone git@github.com/teamdeeson/headless-drupal
+cd headless-drupal
+echo "USE_DOCKER=0" >> .env
+make
+```
 
 The frontend is then available at: [https://localhost:3000](https://localhost:3000)
 

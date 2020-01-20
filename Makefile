@@ -1,9 +1,12 @@
-include .env
-
 #
 # Optionally include a .env.local file to override the defaults in .env
 #
--include .env.local
+-include .env
+
+#
+# You can choose to use Docker for local development by specifying the USE_DOCKER=1 environment variable in
+# your project .env file.
+#
 
 USE_DOCKER ?= 0
 
@@ -135,12 +138,19 @@ composer--post-update-cmd: .persist/public \
                                 docroot/themes/custom;
 
 #
-# Helper SQL command line access command.
+# Helper CLI commands.
 #
 
 sql-cli:
 ifeq ("${USE_DOCKER}","1")
 	@docker-compose exec ${DB_HOST} mysql -u${DB_USER} -p${DB_PASSWORD} ${DB_NAME}
+else
+	@echo "You need to use whatever sqlite uses..."
+endif
+
+logs:
+ifeq ("${USE_DOCKER}","1")
+	docker-compose logs -f
 else
 	@echo "You need to use whatever sqlite uses..."
 endif
