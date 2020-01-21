@@ -1,5 +1,5 @@
 #
-# Optionally include a .env.local file to override the defaults in .env
+# Optionally include a .env to provide secrets and local config options.
 #
 -include .env
 
