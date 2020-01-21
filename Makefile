@@ -91,6 +91,18 @@ format:
 	./node_modules/.bin/prettier ./src/frontend/**/*.{ts,tsx,js,jsx} --write
 
 #
+# Delete all non version controlled files to reset the project.
+#
+
+clean: clean--reset-installation-file
+	rm -rf docroot vendor
+
+clean--reset-installation-file:
+ifneq (,$(wildcard ${PWD}/src/settings/99-installation.settings.inc))
+	mv src/settings/99-installation.settings.inc src/settings/99-installation.settings.inc.hide
+endif
+
+#
 # Generate project symlinks and other disposable assets and wiring.
 #
 
