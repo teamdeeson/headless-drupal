@@ -12,22 +12,28 @@ If correctly setup then both `which yarn` and `which composer` should return a f
 
 ### Using Docker for local development.
 
-You will also need the [Deeson Docker Proxy](https://github.com/teamdeeson/docker-proxy) running.
+You will need the [Deeson Docker Proxy](https://github.com/teamdeeson/docker-proxy) running.
+
+You will also need to set an exported bash environment variable for `USE_DOCKER` which could be done in a local `.env.` file in the project directory or as a global variable in your `~/.bash_profile`  e.g.
+
+```
+echo "export USE_DOCKER=1" >> ~/.bash_profile
+source ~/.bash_profile
+```
 
 ## Getting Started.
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-### Using Docker for local development.
-
 ```
 git clone git@github.com/teamdeeson/headless-drupal
 cd headless-drupal
-echo "USE_DOCKER=1" >> .env
 make
 ```
 
-Executing make will download the project dependencies locally then create a Drupal and node runtime environment inside Docker containers.
+### Using Docker for local development.
+
+Executing `make` will download the project dependencies locally then create a Drupal and node runtime environment inside Docker containers.
 
 The frontend is then available at: [https://headless-drupal.localhost](https://headless-drupal.localhost)
 
@@ -35,12 +41,7 @@ The Drupal backend CMS is available at: [https://cms.headless-drupal.localhost](
 
 ### Not using Docker for local development.
 
-```
-git clone git@github.com/teamdeeson/headless-drupal
-cd headless-drupal
-echo "USE_DOCKER=0" >> .env
-make
-```
+Executing `make` will create an SQLite database in your project root (local.sqlite)
 
 The frontend is then available at: [https://localhost:3000](https://localhost:3000)
 
@@ -49,10 +50,6 @@ The Drupal backend CMS is available at: [https://localhost:8888](https://localho
 ## Starting every other time.
 
 Once installed, you use the following command to start the project without installing all the dependencies:
-
-```
-make start
-```
 
 ## Standards and testing.
 
