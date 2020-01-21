@@ -95,7 +95,7 @@ format:
 #
 
 clean: clean--reset-installation-file
-	rm -rf docroot vendor
+	rm -rf docroot vendor node_modules dist
 
 clean--reset-installation-file:
 ifneq (,$(wildcard ${PWD}/src/settings/99-installation.settings.inc))
