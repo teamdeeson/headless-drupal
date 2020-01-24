@@ -28,6 +28,7 @@ These instructions will get you a copy of the project up and running on your loc
 ```
 git clone git@github.com/teamdeeson/headless-drupal
 cd headless-drupal
+cp .env.example .env
 make
 ```
 
