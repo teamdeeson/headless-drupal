@@ -4,7 +4,9 @@ This is Deeson's framework for developing headless applications.
 
 ## Dependencies.
 
-You will need [Node](https://nodejs.org) and [PHP](https://php.net) installed globally on your development machine. Assuming you are using a Mac then these can be installed with `brew install node php`
+You will need [Node 10](https://nodejs.org) and [PHP](https://php.net) installed globally on your development machine. Assuming you are using a Mac then these can be installed with `brew install node php`
+
+Code deployed to firebase will run under node version 10. To ensure compatibility when running the frontend server locally you should also use node version 10. Yyou can use a node version manager such as nvm or n to switch to version 10.15.
 
 You will also need [yarn](https://yarnpkg.com/lang/en/) for node and [composer](https://getcomposer.org/) for PHP.
 
