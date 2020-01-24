@@ -17,6 +17,16 @@ const app = express();
 
 app.use(helmet());
 
+if (typeof process.env.CSP_FRAME_ANCESTORS !== 'undefined') {
+  app.use((req, res, next) => {
+      res.set(
+          'Content-Security-Policy',
+          'frame-ancestors ' + process.env.CSP_FRAME_ANCESTORS
+      );
+      next();
+  });
+}
+
 app.use(
   '/dist',
   express.static('dist', {
